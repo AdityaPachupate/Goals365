@@ -10,6 +10,11 @@ app.get('/', (c) => {
   return c.text('365 Goals API')
 })
 
+// Keep-alive endpoint for cron jobs (Render free tier)
+app.get('/ping', (c) => {
+  return c.text('pong')
+})
+
 app.on(['POST', 'GET'], '/auth/*', (c) => {
   return auth.handler(c.req.raw)
 })
