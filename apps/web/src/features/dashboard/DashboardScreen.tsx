@@ -173,9 +173,11 @@ const CreateGoalForm = ({ isOpen, onToggle, onSuccess, onCancel }: { isOpen: boo
   const [year, setYear] = useState(new Date().getFullYear());
   const [totalHours, setTotalHours] = useState('');
   const [targetDate, setTargetDate] = useState(new Date(new Date().getFullYear(), 11, 31).toISOString().split('T')[0]);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
     try {
       const newGoal = await createGoal({ 
         title, 
@@ -185,7 +187,8 @@ const CreateGoalForm = ({ isOpen, onToggle, onSuccess, onCancel }: { isOpen: boo
         targetDate 
       });
       onSuccess(newGoal);
-    } catch (error) {
+    } catch (error: any) {
+      setErrorMsg(error.message || 'Failed to create goal. Please try again.');
       console.error('Failed to create goal', error);
     }
   };
@@ -282,6 +285,12 @@ const CreateGoalForm = ({ isOpen, onToggle, onSuccess, onCancel }: { isOpen: boo
               {isPending ? 'Creating...' : 'Create Goal'}
             </button>
           </div>
+          
+          {errorMsg && (
+            <div className="p-3 bg-error/10 border border-error/20 rounded-lg text-error font-body-sm text-center">
+              {errorMsg}
+            </div>
+          )}
         </form>
       </div>
     </details>
