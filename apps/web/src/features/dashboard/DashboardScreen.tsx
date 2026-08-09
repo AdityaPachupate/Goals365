@@ -3,7 +3,7 @@ import { useAuth } from '../../app/providers/AuthProvider';
 import { useGoals, useCreateGoal, useUpdateGoal, useDeleteGoal } from '../goals/queries';
 import { useMilestones, useUpdateMilestone, useCreateMilestone, useDeleteMilestone } from '../milestones/queries';
 import { calculateGoalProgress } from '@365-goals/shared';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { signOut } from '../../lib/auth';
 
 const YearProgress = ({ goals }: { goals: any[] }) => {
