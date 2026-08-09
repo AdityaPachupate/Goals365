@@ -19,13 +19,12 @@ import { milestonesRouter } from './routes/milestones.js'
 app.route('/goals', goalsRouter)
 app.route('/milestones', milestonesRouter)
 
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Starting local development server on http://localhost:3000')
-  serve({
-    fetch: app.fetch,
-    port: 3000
-  })
-}
+const port = parseInt(process.env.PORT || '3000', 10)
+console.log(`Starting server on port ${port}...`)
+serve({
+  fetch: app.fetch,
+  port
+})
 
 export const GET = handle(app)
 export const POST = handle(app)
