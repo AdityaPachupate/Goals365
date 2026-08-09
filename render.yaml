@@ -1,0 +1,40 @@
+services:
+  # Backend API Web Service
+  - type: web
+    name: goals365-api
+    env: node
+    # Since it's a monorepo, install dependencies at the root. 
+    # (Optional: If you want to compile TypeScript, add tsc build step here)
+    buildCommand: pnpm install
+    # Start the backend using tsx directly from the api folder
+    startCommand: cd apps/api && npx tsx src/index.ts
+    envVars:
+      - key: DATABASE_URL
+        sync: false # You will provide this in the Render dashboard
+      - key: GOOGLE_CLIENT_ID
+        sync: false # Provide in Render dashboard
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false # Provide in Render dashboard
+      - key: BETTER_AUTH_SECRET
+        generateValue: true # Render will automatically generate a secure secret
+      # Since we know the names, we can predict the onrender URLs
+      - key: BETTER_AUTH_URL
+        value: "https://goals365-api.onrender.com"
+      - key: FRONTEND_URL
+        value: "https://goals365-web.onrender.com"
+
+  # Frontend Web Static Site
+  - type: web
+    name: goals365-web
+    env: static
+    # Install dependencies and build just the web workspace
+    buildCommand: pnpm install && pnpm --filter @365-goals/web run build
+    staticPublishPath: apps/web/dist
+    # Handle React Router client-side routing
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: "https://goals365-api.onrender.com"
