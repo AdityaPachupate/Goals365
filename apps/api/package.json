@@ -2,7 +2,8 @@
   "name": "@365-goals/api",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "migrate": "tsx src/db/migrate.ts"
   },
   "dependencies": {
     "@365-goals/shared": "workspace:*",
