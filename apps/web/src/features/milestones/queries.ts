@@ -12,7 +12,7 @@ export const useMilestones = (goalId: string) => {
 
 export const useCreateMilestone = () => {
   const queryClient = useQueryClient();
-  return useMutation({
+  return useMutation<Milestone, Error, Partial<Milestone>>({
     mutationFn: api.createMilestone,
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ['milestones', variables.goalId] });
@@ -22,7 +22,7 @@ export const useCreateMilestone = () => {
 
 export const useUpdateMilestone = (goalId: string) => {
   const queryClient = useQueryClient();
-  return useMutation({
+  return useMutation<Milestone, Error, { id: string } & Partial<Milestone>>({
     mutationFn: api.updateMilestone,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['milestones', goalId] });

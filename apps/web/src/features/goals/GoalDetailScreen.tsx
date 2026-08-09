@@ -46,7 +46,7 @@ export const GoalDetailScreen = () => {
   return (
     <div className="p-4 md:p-8 max-w-3xl mx-auto pb-24">
       <header className="mb-8">
-        <button onClick={() => navigate('/goals')} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-4 transition-colors">
+        <button onClick={() => navigate('/')} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-4 transition-colors">
           <ArrowLeft className="w-5 h-5" /> Back to Goals
         </button>
         <div className="flex justify-between items-start">

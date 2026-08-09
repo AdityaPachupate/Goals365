@@ -9,6 +9,7 @@ export const goals = pgTable('goals', {
   title: varchar('title', { length: 100 }).notNull(),
   description: varchar('description', { length: 500 }),
   year: integer('year').notNull(),
+  totalHours: integer('total_hours'),
   targetDate: timestamp('target_date', { mode: 'date' }).notNull(),
   status: statusEnum('status').default('active').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),

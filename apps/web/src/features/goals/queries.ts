@@ -19,7 +19,7 @@ export const useGoal = (id: string) => {
 
 export const useCreateGoal = () => {
   const queryClient = useQueryClient();
-  return useMutation({
+  return useMutation<Goal, Error, Partial<Goal>>({
     mutationFn: api.createGoal,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['goals'] });

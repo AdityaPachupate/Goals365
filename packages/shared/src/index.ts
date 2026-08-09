@@ -15,6 +15,7 @@ export const GoalSchema = z.object({
   title: z.string().min(1).max(100),
   description: z.string().max(500).optional(),
   year: z.number().int(),
+  totalHours: z.number().int().nonnegative().optional().nullable(),
   targetDate: z.string(),
   status: z.enum(['active', 'completed', 'archived']),
   createdAt: z.string(),
@@ -42,6 +43,7 @@ export const CreateGoalSchema = GoalSchema.pick({
   title: true,
   description: true,
   year: true,
+  totalHours: true,
   targetDate: true,
 });
 
@@ -61,4 +63,4 @@ export const UpdateMilestoneSchema = z.object({
   status: z.enum(['pending', 'completed']).optional(),
 });
 
-export * from './utils/calculations.js';
+export * from './utils/calculations';

@@ -15,8 +15,8 @@ export const CreateGoalScreen = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await createGoal({ title, description, year: Number(year), targetDate });
-      navigate('/goals');
+      const newGoal = await createGoal({ title, description, year: Number(year), targetDate });
+      navigate(`/goals/${newGoal.id}`);
     } catch (error) {
       console.error('Failed to create goal', error);
     }
@@ -25,7 +25,7 @@ export const CreateGoalScreen = () => {
   return (
     <div className="p-4 md:p-8 max-w-2xl mx-auto">
       <header className="flex items-center gap-4 mb-8">
-        <button onClick={() => navigate('/goals')} className="p-2 -ml-2 rounded-full hover:bg-gray-100 transition-colors">
+        <button onClick={() => navigate('/')} className="p-2 -ml-2 rounded-full hover:bg-gray-100 transition-colors">
           <ArrowLeft className="w-6 h-6 text-gray-700" />
         </button>
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Create New Goal</h1>

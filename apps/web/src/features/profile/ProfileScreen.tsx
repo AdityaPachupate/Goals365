@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAuth } from '../../app/providers/AuthProvider';
 import { signOut } from '../../lib/auth';
 

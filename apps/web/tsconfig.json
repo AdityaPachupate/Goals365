@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es2023",
     "module": "esnext",
-    "lib": ["ES2023", "DOM"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
     "types": ["vite/client"],
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
@@ -17,8 +18,11 @@
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@365-goals/shared": ["../../packages/shared/src/index.ts"]
+    }
   },
   "include": ["src"]
 }

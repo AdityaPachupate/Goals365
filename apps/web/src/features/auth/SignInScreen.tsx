@@ -1,11 +1,10 @@
-import React from 'react';
 import { signIn } from '../../lib/auth';
 
 export const SignInScreen = () => {
   const handleSignIn = async () => {
     await signIn.social({
       provider: 'google',
-      callbackURL: '/'
+      callbackURL: window.location.origin + '/'
     });
   };
 

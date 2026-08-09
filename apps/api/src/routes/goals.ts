@@ -5,8 +5,9 @@ import { goals } from '../db/schema.js';
 import { eq, and } from 'drizzle-orm';
 import { requireSession } from '../auth/middleware.js';
 import { CreateGoalSchema, UpdateGoalSchema } from '@365-goals/shared';
+import type { AppEnv } from '../types.js';
 
-export const goalsRouter = new Hono();
+export const goalsRouter = new Hono<AppEnv>();
 
 // Require authentication for all goal routes
 goalsRouter.use('*', requireSession);

@@ -1,13 +1,19 @@
 {
   "name": "@365-goals/api",
   "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
   "dependencies": {
+    "@365-goals/shared": "workspace:*",
+    "@hono/node-server": "^1.12.1",
+    "@hono/zod-validator": "^0.2.2",
     "@neondatabase/serverless": "^0.9.4",
     "better-auth": "^1.1.14",
-    "@hono/zod-validator": "^0.2.2",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.33.0",
-    "hono": "^4.13.1"
+    "hono": "^4.13.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

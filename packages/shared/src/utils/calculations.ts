@@ -1,4 +1,4 @@
-import type { Goal, Milestone } from '../index.js';
+import type { Goal, Milestone } from '../index';
 
 /**
  * Calculates the progress percentage of a goal based on completed milestones.

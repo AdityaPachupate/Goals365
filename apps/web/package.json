@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@365-goals/shared": "workspace:*",
     "@tanstack/react-query": "^5.52.0",
     "better-auth": "^1.1.14",
     "clsx": "^2.1.1",

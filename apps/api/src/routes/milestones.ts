@@ -5,8 +5,9 @@ import { milestones, goals } from '../db/schema.js';
 import { eq, and } from 'drizzle-orm';
 import { requireSession } from '../auth/middleware.js';
 import { CreateMilestoneSchema, UpdateMilestoneSchema } from '@365-goals/shared';
+import type { AppEnv } from '../types.js';
 
-export const milestonesRouter = new Hono();
+export const milestonesRouter = new Hono<AppEnv>();
 
 milestonesRouter.use('*', requireSession);
 
