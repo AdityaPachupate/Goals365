@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.52.0",
     "better-auth": "^1.1.14",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.31",
