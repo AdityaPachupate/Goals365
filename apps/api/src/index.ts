@@ -1,14 +1,17 @@
 import { Hono } from 'hono'
+import { handle } from 'hono/vercel'
+import { auth } from './auth/auth.js'
 
-const app = new Hono()
-
-const welcomeStrings = [
-  'Hello Hono!',
-  'To learn more about Hono on Vercel, visit https://vercel.com/docs/frameworks/backend/hono'
-]
+export const app = new Hono().basePath('/api/v1')
 
 app.get('/', (c) => {
-  return c.text(welcomeStrings.join('\n\n'))
+  return c.text('365 Goals API')
 })
 
+app.on(['POST', 'GET'], '/auth/*', (c) => {
+  return auth.handler(c.req.raw)
+})
+
+export const GET = handle(app)
+export const POST = handle(app)
 export default app
