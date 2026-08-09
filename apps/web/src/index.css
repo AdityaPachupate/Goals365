@@ -4,6 +4,43 @@
 
 @layer base {
   body {
-    @apply antialiased text-gray-900 bg-gray-50;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #1b1b23;
+    background-color: #F8FAFC;
+    min-height: max(884px, 100dvh);
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes panDoodle {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100px 100px;
+    }
   }
 }
