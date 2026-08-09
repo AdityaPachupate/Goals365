@@ -12,6 +12,11 @@ app.on(['POST', 'GET'], '/auth/*', (c) => {
   return auth.handler(c.req.raw)
 })
 
+import { goalsRouter } from './routes/goals.js'
+import { milestonesRouter } from './routes/milestones.js'
+app.route('/goals', goalsRouter)
+app.route('/milestones', milestonesRouter)
+
 export const GET = handle(app)
 export const POST = handle(app)
 export default app

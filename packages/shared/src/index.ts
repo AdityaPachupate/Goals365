@@ -37,3 +37,26 @@ export const MilestoneSchema = z.object({
 });
 
 export type Milestone = z.infer<typeof MilestoneSchema>;
+
+export const CreateGoalSchema = GoalSchema.pick({
+  title: true,
+  description: true,
+  year: true,
+  targetDate: true,
+});
+
+export const UpdateGoalSchema = CreateGoalSchema.partial().extend({
+  status: GoalSchema.shape.status.optional(),
+});
+
+export const CreateMilestoneSchema = z.object({
+  goalId: z.string().uuid(),
+  title: z.string().min(1).max(200),
+  sortOrder: z.number().int().optional(),
+});
+
+export const UpdateMilestoneSchema = z.object({
+  title: z.string().min(1).max(200).optional(),
+  sortOrder: z.number().int().optional(),
+  status: z.enum(['pending', 'completed']).optional(),
+});
