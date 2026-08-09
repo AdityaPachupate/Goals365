@@ -9,6 +9,7 @@ import { SignInScreen } from './features/auth/SignInScreen';
 import { DashboardScreen } from './features/dashboard/DashboardScreen';
 import { GoalsListScreen } from './features/goals/GoalsListScreen';
 import { CreateGoalScreen } from './features/goals/CreateGoalScreen';
+import { GoalDetailScreen } from './features/goals/GoalDetailScreen';
 import { ProfileScreen } from './features/profile/ProfileScreen';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
                 <Route path="/" element={<DashboardScreen />} />
                 <Route path="/goals" element={<GoalsListScreen />} />
                 <Route path="/goals/new" element={<CreateGoalScreen />} />
+                <Route path="/goals/:id" element={<GoalDetailScreen />} />
                 <Route path="/profile" element={<ProfileScreen />} />
               </Route>
             </Route>

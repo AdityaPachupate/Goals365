@@ -33,6 +33,7 @@ export const GoalsListScreen = () => {
           {goals?.map(goal => (
             <motion.div 
               key={goal.id}
+              onClick={() => navigate(`/goals/${goal.id}`)}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               whileTap={{ scale: 0.98 }}
