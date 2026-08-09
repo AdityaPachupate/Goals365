@@ -8,6 +8,7 @@ dotenv.config();
 export const auth = betterAuth({
     baseURL: (process.env.BETTER_AUTH_URL || "http://localhost:3000").replace(/\/api\/v1\/auth\/?$/, '').replace(/\/$/, '') + '/api/v1/auth',
     trustedOrigins: ["http://localhost:5173", process.env.FRONTEND_URL].filter(Boolean) as string[],
+    trustHost: true,
     database: drizzleAdapter(db, {
         provider: "pg"
     }),

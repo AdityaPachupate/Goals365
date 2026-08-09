@@ -8,7 +8,11 @@ import type { AppEnv } from './types.js'
 export const app = new Hono<AppEnv>().basePath('/api/v1')
 
 app.use('*', cors({
-  origin: (origin) => origin || 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173', 
+    'https://goals365-client.onrender.com', 
+    process.env.FRONTEND_URL || ''
+  ].filter(Boolean),
   credentials: true,
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowHeaders: ['Content-Type', 'Authorization'],
@@ -23,7 +27,7 @@ app.get('/ping', (c) => {
   return c.text('pong')
 })
 
-app.on(['POST', 'GET'], '/auth/*', (c) => {
+app.all('/auth/*', (c) => {
   return auth.handler(c.req.raw)
 })
 
